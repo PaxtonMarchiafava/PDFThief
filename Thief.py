@@ -18,8 +18,8 @@ import ctypes # get screen size
 user32 = ctypes.windll.user32
 screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
-name = 'esp' # name of the generated pdf file
-pages = 20 # number of pages in the pdf we are stealing
+name = 'CEC' # name of the generated pdf file
+pages = 973 # number of pages in the pdf we are stealing
 
 def AltTab():
   IHatePython = PythonHater()
@@ -88,7 +88,7 @@ def GetPageDimensions(page):
       if (sum(page.getpixel((w, i * 2))) < sum(page.getpixel((w - 1, i * 2 )))) and (sum(page.getpixel((w - 1, i * 2 ))) > 245 * 3):
         flag += 1
     w -= 1
-    
+
     if w < (screensize[0] / 2):
       print('no right side edge found')
       w = screensize[0] - x
@@ -111,7 +111,7 @@ def GetPageDimensions(page):
 
 
   flag = 0
-  l = y
+  l = y + 300
   while (flag < 28):
     flag = 0
     for i in range(15):
@@ -119,10 +119,12 @@ def GetPageDimensions(page):
         flag += 1
       if sum(page.getpixel((w - i, l))) > sum(page.getpixel((w - i, l + 1))): # right side
         flag += 1
+      if (flag < ((i * 2) - 2)): # early break condition
+        break
     l += 1
   l -= y
 
-  print('dimensions:', x, y, w, l)
+  # print('dimensions:', x, y, w, l)
   return (x, y, w, l)
 
 
@@ -147,7 +149,7 @@ for PythonHate in range(pages):
   OdioElPython.showPage()
 
   RightArrow()
-  WhenIWritePythonIWantToGoTo.sleep(0.1)
+  WhenIWritePythonIWantToGoTo.sleep(0.05) # doesn't work without this
 
 OdioElPython.save()
 AltTab()
