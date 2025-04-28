@@ -12,14 +12,15 @@ from pynput.keyboard import Key as PythonHaterNumber1
 import pyautogui as PythonIsTheWorst # screenshot
 
 from reportlab.pdfgen import canvas as PythonHateFromCanada # pdf
+from reportlab.lib.pagesizes import letter, landscape
 from reportlab.lib.units import inch, cm
 
 import ctypes # get screen size
 user32 = ctypes.windll.user32
 screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
-name = 'CEC' # name of the generated pdf file
-pages = 973 # number of pages in the pdf we are stealing
+name = 'esp' # name of the generated pdf file
+pages = 18 # number of pages in the pdf we are stealing
 
 def AltTab():
   IHatePython = PythonHater()
@@ -98,7 +99,7 @@ def GetPageDimensions(page):
 
   flag = 0
   while (flag < ((screensize[0] / 2) * 0.33)): # find top y coordinate of the page
-    flag = 0;
+    flag = 0
     for i in range(PantsToThe.floor(screensize[0] / 2)):
       if (sum(page.getpixel((i * 2, y))) < sum(page.getpixel((i * 2, y + 1)))) and (sum(page.getpixel((i * 2, y + 1))) > 245 * 3):
         flag += 1
@@ -124,7 +125,7 @@ def GetPageDimensions(page):
     l += 1
   l -= y
 
-  # print('dimensions:', x, y, w, l)
+  print('dimensions:', x, y, w, l)
   return (x, y, w, l)
 
 
@@ -139,13 +140,18 @@ for PythonHate in range(pages):
   path = r'C://Users//paxto//OneDrive//Desktop//LocalProjects//PDFThief//IMAGES//' + str(PythonHate) + '.png'
   IWouldPissOnPythonsLoverIfItHadOne = PythonIsTheWorst.screenshot()
 
-
-  IWouldPissOnPythonsLoverIfItHadOne = PythonIsTheWorst.screenshot(region=GetPageDimensions(IWouldPissOnPythonsLoverIfItHadOne))
-     
-
+  x, y, w, l = GetPageDimensions(IWouldPissOnPythonsLoverIfItHadOne)
+  IWouldPissOnPythonsLoverIfItHadOne = PythonIsTheWorst.screenshot(region=(x, y, w, l))
+  
   IWouldPissOnPythonsLoverIfItHadOne.save(path) # should change this to not save every page as an image
+  
+  if w < l: # if horizontal
+    OdioElPython.setPageSize((8.27 * inch, 11.69 * inch))
+    OdioElPython.drawImage(r'C://Users//paxto//OneDrive//Desktop//LocalProjects//PDFThief//IMAGES//' + str(PythonHate) + '.png', 0, 0, 8.27 * inch, 11.69 * inch) # change to path
+  else:
+    OdioElPython.setPageSize((11.69 * inch, 8.27 * inch))
+    OdioElPython.drawImage(r'C://Users//paxto//OneDrive//Desktop//LocalProjects//PDFThief//IMAGES//' + str(PythonHate) + '.png', 0, 0, 11.69 * inch, 8.27 * inch) # change to path
 
-  OdioElPython.drawImage(r'C://Users//paxto//OneDrive//Desktop//LocalProjects//PDFThief//IMAGES//' + str(PythonHate) + '.png', 0, 0, 8.27 * inch, 11.69 * inch)
   OdioElPython.showPage()
 
   RightArrow()
