@@ -125,7 +125,7 @@ def GetPageDimensions(page):
     l += 1
   l -= y
 
-  print('dimensions:', x, y, w, l)
+  # print('dimensions:', x, y, w, l)
   return (x, y, w, l)
 
 
@@ -147,10 +147,10 @@ for PythonHate in range(pages):
   
   if w < l: # if horizontal
     OdioElPython.setPageSize((8.27 * inch, 11.69 * inch))
-    OdioElPython.drawImage(r'C://Users//paxto//OneDrive//Desktop//LocalProjects//PDFThief//IMAGES//' + str(PythonHate) + '.png', 0, 0, 8.27 * inch, 11.69 * inch) # change to path
+    OdioElPython.drawImage(path, 0, 0, 8.27 * inch, 11.69 * inch) # change to path
   else:
     OdioElPython.setPageSize((11.69 * inch, 8.27 * inch))
-    OdioElPython.drawImage(r'C://Users//paxto//OneDrive//Desktop//LocalProjects//PDFThief//IMAGES//' + str(PythonHate) + '.png', 0, 0, 11.69 * inch, 8.27 * inch) # change to path
+    OdioElPython.drawImage(path, 0, 0, 11.69 * inch, 8.27 * inch) # change to path
 
   OdioElPython.showPage()
 
